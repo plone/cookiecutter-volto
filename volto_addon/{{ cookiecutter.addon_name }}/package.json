@@ -4,7 +4,6 @@
   "description": "{{ cookiecutter.description }}",
   "author": "{{ cookiecutter.author }}",
   "homepage": "https://github.com/{{ cookiecutter.github_organization }}/{{ cookiecutter.addon_name }}",
-  "main": "src/index.js",
   "license": "MIT",
   "keywords": [
     "volto-addon",
@@ -12,16 +11,13 @@
     "plone",
     "react"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "start": "pnpm build:deps && VOLTOCONFIG=$(pwd)/volto.config.js pnpm --filter @plone/volto start",
     "start:prod": "pnpm --filter @plone/volto start:prod",
     "build": "pnpm build:deps && VOLTOCONFIG=$(pwd)/volto.config.js pnpm --filter @plone/volto build",
     "build:deps": "pnpm --filter @plone/registry --filter @plone/components build",
-    "i18n": "pnpm --filter addons i18n",
+    "i18n": "pnpm --filter {{ cookiecutter.npm_package_name }} i18n",
     "test": "RAZZLE_JEST_CONFIG=$(pwd)/jest-addon.config.js pnpm --filter @plone/volto test",
     "lint": "eslint --max-warnings=0 'packages/**/src/**/*.{js,jsx,ts,tsx}'",
     "lint:fix": "eslint --fix 'packages/**/src/**/*.{js,jsx,ts,tsx}'",
@@ -42,7 +38,6 @@
     "{{ cookiecutter.npm_package_name }}": "workspace:*"
   },
   "devDependencies": {
-    "@plone/scripts": "{{ cookiecutter.__version_plone_scripts }}",
     "mrs-developer": "{{ cookiecutter.__version_mrs_developer }}"
   },
   "packageManager": "pnpm@{{ cookiecutter.__version_pnpm }}"
