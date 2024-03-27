@@ -118,13 +118,13 @@ def test_pkg_src_files_generated(cutter_result, file_path: str):
         [".github/workflows/i18n.yml", "github-workflow"],
         [".github/workflows/storybook.yml", "github-workflow"],
         [".github/workflows/unit.yml", "github-workflow"],
-        ["package.json", "package.json"],
-        ["packages/volto-addon/package.json", "package.json"],
-        ["packages/volto-addon/tsconfig.json", "tsconfig.json"],
+        ["package.json", "package"],
+        ["packages/volto-addon/package.json", "package"],
+        ["packages/volto-addon/tsconfig.json", "tsconfig"],
     ],
 )
 def test_pkg_src_files_generated(
-    cutter_result, validate_schema, file_path: str, schema_name: str
+    cutter_result, schema_validate_file, file_path: str, schema_name: str
 ):
     path = cutter_result.project_path / file_path
-    assert validate_schema(path, schema_name)
+    assert schema_validate_file(path, schema_name)
