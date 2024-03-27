@@ -1,0 +1,9 @@
+{
+  "templates": {
+    "addon": {
+      "path": "./volto_addon",
+      "title": "Volto Add-on",
+      "description": "Create a new Volto Add-on"
+    }
+  }
+}

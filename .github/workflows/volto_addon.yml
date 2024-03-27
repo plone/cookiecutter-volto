@@ -1,0 +1,46 @@
+name: Volto Add-on Cookiecutter CI
+on:
+  push:
+    paths:
+      - "volto_addon/**"
+      - ".github/workflows/volto_addon.yml"
+  workflow_dispatch:
+
+jobs:
+
+  generation:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version:
+          - "3.8"
+          - "3.9"
+          - "3.10"
+          - "3.11"
+          - "3.12"
+
+    steps:
+      # git checkout
+      - name: Checkout codebase
+        uses: actions/checkout@v4
+
+      # python setup
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+
+      # python install
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      # Test
+      - name: Run tests
+        run: |
+          cd volto_addon
+          python -m pytest tests

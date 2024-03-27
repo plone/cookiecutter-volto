@@ -1,0 +1,45 @@
+{
+  "name": "{{ cookiecutter.npm_package_name }}",
+  "version": "{{ cookiecutter.__version_package }}",
+  "description": "{{ cookiecutter.description }}",
+  "main": "src/index.js",
+  "license": "MIT",
+  "keywords": [
+    "volto-addon",
+    "volto",
+    "plone",
+    "react"
+  ],
+  "author": "{{ cookiecutter.author }}",
+  "homepage": "https://github.com/{{ cookiecutter.github_organization }}/{{ cookiecutter.addon_name }}#readme",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:{{ cookiecutter.github_organization }}/{{ cookiecutter.addon_name }}.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "init:quasar": "missdev --no-config --fetch-https",
+    "build:deps": "pnpm --filter @plone/registry --filter @plone/components build",
+    "start": "pnpm build:deps && pnpm --filter @plone/volto start",
+    "i18n": "rm -rf build/messages && NODE_ENV=production i18n --addon",
+    "dry-release": "release-it --dry-run",
+    "release": "release-it",
+    "release-major-alpha": "release-it major --preRelease=alpha",
+    "release-alpha": "release-it --preRelease=alpha"
+  },
+  "dependencies": {
+    "@plone/components": "{{ cookiecutter.__version_plone_components }}"
+  },
+  "peerDependencies": {
+    "classnames": "2.2.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-intl": "3.8.0"
+  },
+  "devDependencies": {
+    "@plone/scripts": "{{ cookiecutter.__version_plone_scripts }}",
+    "release-it": "{{ cookiecutter.__version_release_it }}"
+  }
+}

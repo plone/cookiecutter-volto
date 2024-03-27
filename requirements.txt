@@ -1,0 +1,9 @@
+black
+cookiecutter
+isort
+pytest
+pytest-cookies
+wheel
+ruamel.yaml
+jsonschema
+requests
