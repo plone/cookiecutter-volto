@@ -51,12 +51,25 @@ const defaultRazzleOptions = {
   staticCssInDev: false,
   emitOnErrors: false,
   disableWebpackbar: false,
-  browserslist: ['>1%', 'last 4 versions', 'Firefox ESR', 'not ie 11', 'not dead'],
+  browserslist: [
+    '>1%',
+    'last 4 versions',
+    'Firefox ESR',
+    'not ie 11',
+    'not dead',
+  ],
 };
 
 module.exports = {
-  stories: ['../packages/**/*.mdx', '../packages/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-webpack5-compiler-babel'],
+  stories: [
+    '../packages/**/*.mdx',
+    '../packages/**/*.stories.@(js|jsx|ts|tsx)',
+  ],
+  addons: [
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-webpack5-compiler-babel',
+  ],
   framework: {
     name: '@storybook/react-webpack5',
     options: { builder: { useSWC: true } },
@@ -115,7 +128,9 @@ module.exports = {
     // Put the SVG loader on top and prevent the asset/resource rule
     // from processing the app's SVGs
     config.module.rules.unshift(SVGLOADER);
-    const fileLoaderRule = config.module.rules.find((rule) => rule.test.test('.svg'));
+    const fileLoaderRule = config.module.rules.find((rule) =>
+      rule.test.test('.svg'),
+    );
     fileLoaderRule.exclude = /icons\/.*\.svg$/;
 
     config.plugins.unshift(
@@ -136,7 +151,9 @@ module.exports = {
     };
 
     // Add-ons have to be loaded with babel
-    const addonPaths = registry.getAdd - ons().map((addon) => fs.realpathSync(addon.modulePath));
+    const addonPaths = registry
+      .getAddons()
+      .map((addon) => fs.realpathSync(addon.modulePath));
 
     resultConfig.module.rules[13].exclude = (input) =>
       // exclude every input from node_modules except from @plone/volto
@@ -147,11 +164,19 @@ module.exports = {
       // If input is in an addon, DON'T exclude it
       !addonPaths.some((p) => input.includes(p));
 
-    resultConfig.module.rules[13].include = [/preview\.jsx/, ...resultConfig.module.rules[13].include, ...addonPaths];
+    resultConfig.module.rules[13].include = [
+      /preview\.jsx/,
+      ...resultConfig.module.rules[13].include,
+      ...addonPaths,
+    ];
 
-    const addonExtenders = registry.getAdd - onExtenders().map((m) => require(m));
+    const addonExtenders = registry.getAddonExtenders().map((m) => require(m));
 
-    const extendedConfig = addonExtenders.reduce((acc, extender) => extender.modify(acc, { target: 'web', dev: 'dev' }, config), resultConfig);
+    const extendedConfig = addonExtenders.reduce(
+      (acc, extender) =>
+        extender.modify(acc, { target: 'web', dev: 'dev' }, config),
+      resultConfig,
+    );
 
     // Note: we don't actually support razzle plugins, which are also a feature
     // of the razzle.extend.js addons file. Those features are probably
