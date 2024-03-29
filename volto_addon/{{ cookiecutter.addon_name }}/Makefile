@@ -50,7 +50,7 @@ format: ## Format codebase
 lint: ## Lint Codebase
 	pnpm lint
 	pnpm prettier
-	pnpm stylelint --allow-empty-input
+	pnpm stylelint
 
 .PHONY: test
 test: ## Run unit tests
@@ -58,12 +58,12 @@ test: ## Run unit tests
 
 .PHONY: test-ci
 test-ci: ## Run unit tests in CI
-	CI=1 RAZZLE_JEST_CONFIG=$(CURRENT_DIR)/jest-addon.config.js pnpm --filter @plone/volto test
+	CI=1 RAZZLE_JEST_CONFIG=$(CURRENT_DIR)/jest-addon.config.js pnpm --filter @plone/volto test -- --passWithNoTests
 
 .PHONY: start-backend-docker
 start-backend-docker:		## Starts a Docker-based backend for developing
 	@echo "$(GREEN)==> Start Docker-based Plone Backend$(RESET)"
-	docker run -it --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' $(DOCKER_IMAGE)
+	docker run -it --rm --name=backend -p 8080:8080 -e SITE=Plone $(DOCKER_IMAGE)
 
 ## Storybook
 .PHONY: storybook-start
