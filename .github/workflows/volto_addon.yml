@@ -74,8 +74,8 @@ jobs:
 
       - name: Start Servers
         uses: JarvusInnovations/background-action@v1
-        working-directory: volto_addon
         with:
+          working-directory: volto_addon
           run: |
             make start-test-acceptance-server-ci &
             make start-test-acceptance-frontend &
