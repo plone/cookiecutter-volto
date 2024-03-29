@@ -72,62 +72,62 @@ jobs:
         run: |
           make install
 
-    - name: Start Servers
-      uses: JarvusInnovations/background-action@v1
-      working-directory: volto_addon
-      with:
+      - name: Start Servers
+        uses: JarvusInnovations/background-action@v1
+        working-directory: volto_addon
+        with:
+          run: |
+            make start-test-acceptance-server-ci &
+            make start-test-acceptance-frontend &
+          # your step-level and job-level environment variables are available to your commands as-is
+          # npm install will count towards the wait-for timeout
+          # whenever possible, move unrelated scripts to a different step
+          # to background multiple processes: add & to the end of the command
+
+          wait-on: |
+            http-get://localhost:8080/Plone
+            http://localhost:3000
+          # IMPORTANT: to use environment variables in wait-on, you must use this form: ${{ env.VAR }}
+          # See wait-on section below for all resource types and prefixes
+
+          tail: true # true = stderr,stdout
+          # This will allow you to monitor the progress live
+
+          log-output-resume: stderr
+          # Eliminates previosuly output stderr log entries from post-run output
+
+          wait-for: 10m
+
+          log-output: stderr,stdout # same as true
+
+          log-output-if: failure
+
+      - name: Run acceptance tests
+        working-directory: volto_addon
         run: |
-          make start-test-acceptance-server-ci &
-          make start-test-acceptance-frontend &
-        # your step-level and job-level environment variables are available to your commands as-is
-        # npm install will count towards the wait-for timeout
-        # whenever possible, move unrelated scripts to a different step
-        # to background multiple processes: add & to the end of the command
+          make test-acceptance-headless
 
-        wait-on: |
-          http-get://localhost:8080/Plone
-          http://localhost:3000
-        # IMPORTANT: to use environment variables in wait-on, you must use this form: ${{ env.VAR }}
-        # See wait-on section below for all resource types and prefixes
+      - name: Run unit tests
+        working-directory: volto_addon
+        run: |
+          make test-ci
 
-        tail: true # true = stderr,stdout
-        # This will allow you to monitor the progress live
+      - name: Run i18n tests
+        working-directory: volto_addon
+        run: |
+          make i18n
 
-        log-output-resume: stderr
-        # Eliminates previosuly output stderr log entries from post-run output
+      - name: Run linting
+        working-directory: volto_addon
+        run: |
+          make lint
 
-        wait-for: 10m
+      - name: Run formatting
+        working-directory: volto_addon
+        run: |
+          make format
 
-        log-output: stderr,stdout # same as true
-
-        log-output-if: failure
-
-    - name: Run acceptance tests
-      working-directory: volto_addon
-      run: |
-        make test-acceptance-headless
-
-    - name: Run unit tests
-      working-directory: volto_addon
-      run: |
-        make test-ci
-
-    - name: Run i18n tests
-      working-directory: volto_addon
-      run: |
-        make i18n
-
-    - name: Run linting
-      working-directory: volto_addon
-      run: |
-        make lint
-
-    - name: Run formatting
-      working-directory: volto_addon
-      run: |
-        make format
-
-    - name: Run Storybook
-      working-directory: volto_addon
-      run: |
-        make storybook-build
+      - name: Run Storybook
+        working-directory: volto_addon
+        run: |
+          make storybook-build
