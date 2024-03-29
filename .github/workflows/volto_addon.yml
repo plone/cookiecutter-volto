@@ -44,3 +44,90 @@ jobs:
         run: |
           cd volto_addon
           python -m pytest tests
+
+  functional:
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Checkout codebase
+          uses: actions/checkout@v4
+
+        - name: Set up Python 3.8
+          uses: actions/setup-python@v2
+          with:
+            python-version: 3.8
+            cache: 'pip'
+
+        - name: Install dependencies
+          run: |
+            pip install -r requirements.txt
+
+        - name: Generate
+          working-directory: volto_addon
+          run: |
+            make generate
+
+        - name: Install generated package
+          working-directory: volto_addon
+          run: |
+            make install
+
+      - name: Start Servers
+        uses: JarvusInnovations/background-action@v1
+        working-directory: volto_addon
+        with:
+          run: |
+            make start-test-acceptance-server-ci &
+            make start-test-acceptance-frontend &
+          # your step-level and job-level environment variables are available to your commands as-is
+          # npm install will count towards the wait-for timeout
+          # whenever possible, move unrelated scripts to a different step
+          # to background multiple processes: add & to the end of the command
+
+          wait-on: |
+            http-get://localhost:8080/Plone
+            http://localhost:3000
+          # IMPORTANT: to use environment variables in wait-on, you must use this form: ${{ env.VAR }}
+          # See wait-on section below for all resource types and prefixes
+
+          tail: true # true = stderr,stdout
+          # This will allow you to monitor the progress live
+
+          log-output-resume: stderr
+          # Eliminates previosuly output stderr log entries from post-run output
+
+          wait-for: 10m
+
+          log-output: stderr,stdout # same as true
+
+          log-output-if: failure
+
+      - name: Run acceptance tests
+        working-directory: volto_addon
+        run: |
+          make test-acceptance-headless
+
+      - name: Run unit tests
+        working-directory: volto_addon
+        run: |
+          make test-ci
+
+      - name: Run i18n tests
+        working-directory: volto_addon
+        run: |
+          make i18n
+
+      - name: Run linting
+        working-directory: volto_addon
+        run: |
+          make lint
+
+      - name: Run formatting
+        working-directory: volto_addon
+        run: |
+          make format
+
+      - name: Run Storybook
+        working-directory: volto_addon
+        run: |
+          make storybook-build
