@@ -58,7 +58,7 @@ test: ## Run unit tests
 
 .PHONY: test-ci
 test-ci: ## Run unit tests in CI
-	CI=1 RAZZLE_JEST_CONFIG=$(CURRENT_DIR)/jest-addon.config.js pnpm --filter @plone/volto test --passWithNoTests
+	CI=1 RAZZLE_JEST_CONFIG=$(CURRENT_DIR)/jest-addon.config.js pnpm --filter @plone/volto test -- --passWithNoTests
 
 .PHONY: start-backend-docker
 start-backend-docker:		## Starts a Docker-based backend for developing
