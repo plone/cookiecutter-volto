@@ -113,6 +113,26 @@ jobs:
         run: |
           make test-ci
 
+      - name: Run i18n tests
+        working-directory: volto_addon/volto-addon
+        run: |
+          make i18n
+
+      - name: Run linting
+        working-directory: volto_addon/volto-addon
+        run: |
+          make lint
+
+      - name: Run formatting
+        working-directory: volto_addon/volto-addon
+        run: |
+          make format
+
+      - name: Run Storybook
+        working-directory: volto_addon/volto-addon
+        run: |
+          make storybook-build
+
       - name: Start Servers
         uses: JarvusInnovations/background-action@v1
         with:
@@ -147,23 +167,3 @@ jobs:
         working-directory: volto_addon/volto-addon
         run: |
           make test-acceptance-headless
-
-      - name: Run i18n tests
-        working-directory: volto_addon/volto-addon
-        run: |
-          make i18n
-
-      - name: Run linting
-        working-directory: volto_addon/volto-addon
-        run: |
-          make lint
-
-      - name: Run formatting
-        working-directory: volto_addon/volto-addon
-        run: |
-          make format
-
-      - name: Run Storybook
-        working-directory: volto_addon/volto-addon
-        run: |
-          make storybook-build
