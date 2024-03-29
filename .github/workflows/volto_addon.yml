@@ -68,14 +68,14 @@ jobs:
           make generate
 
       - name: Install generated package
-        working-directory: volto_addon
+        working-directory: volto_addon/volto-addon
         run: |
           make install
 
       - name: Start Servers
         uses: JarvusInnovations/background-action@v1
         with:
-          working-directory: volto_addon
+          working-directory: volto_addon/volto-addon
           run: |
             make start-test-acceptance-server-ci &
             make start-test-acceptance-frontend &
@@ -103,31 +103,31 @@ jobs:
           log-output-if: failure
 
       - name: Run acceptance tests
-        working-directory: volto_addon
+        working-directory: volto_addon/volto-addon
         run: |
           make test-acceptance-headless
 
       - name: Run unit tests
-        working-directory: volto_addon
+        working-directory: volto_addon/volto-addon
         run: |
           make test-ci
 
       - name: Run i18n tests
-        working-directory: volto_addon
+        working-directory: volto_addon/volto-addon
         run: |
           make i18n
 
       - name: Run linting
-        working-directory: volto_addon
+        working-directory: volto_addon/volto-addon
         run: |
           make lint
 
       - name: Run formatting
-        working-directory: volto_addon
+        working-directory: volto_addon/volto-addon
         run: |
           make format
 
       - name: Run Storybook
-        working-directory: volto_addon
+        working-directory: volto_addon/volto-addon
         run: |
           make storybook-build
