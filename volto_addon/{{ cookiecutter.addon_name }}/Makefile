@@ -44,13 +44,13 @@ i18n: ## Sync i18n
 format: ## Format codebase
 	pnpm lint:fix
 	pnpm prettier:fix
-	pnpm stylelint:fix -- --allow-empty-input
+	pnpm stylelint:fix
 
 .PHONY: lint
 lint: ## Lint Codebase
 	pnpm lint
 	pnpm prettier
-	pnpm stylelint --allow-empty-input
+	pnpm stylelint
 
 .PHONY: test
 test: ## Run unit tests
