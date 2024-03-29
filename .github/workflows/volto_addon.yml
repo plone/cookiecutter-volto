@@ -108,6 +108,11 @@ jobs:
         run: |
           make install
 
+      - name: Run unit tests
+        working-directory: volto_addon/volto-addon
+        run: |
+          make test-ci
+
       - name: Start Servers
         uses: JarvusInnovations/background-action@v1
         with:
@@ -142,11 +147,6 @@ jobs:
         working-directory: volto_addon/volto-addon
         run: |
           make test-acceptance-headless
-
-      - name: Run unit tests
-        working-directory: volto_addon/volto-addon
-        run: |
-          make test-ci
 
       - name: Run i18n tests
         working-directory: volto_addon/volto-addon
