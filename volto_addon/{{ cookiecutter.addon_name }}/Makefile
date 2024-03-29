@@ -44,7 +44,7 @@ i18n: ## Sync i18n
 format: ## Format codebase
 	pnpm lint:fix
 	pnpm prettier:fix
-	pnpm stylelint:fix
+	pnpm stylelint:fix -- --allow-empty-input
 
 .PHONY: lint
 lint: ## Lint Codebase
