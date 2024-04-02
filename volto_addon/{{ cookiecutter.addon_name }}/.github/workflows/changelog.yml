@@ -49,9 +49,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pnpm i
           make install
-          pnpm i
 
       - name: Check for presence of a Change Log fragment (only pull requests)
         run: |

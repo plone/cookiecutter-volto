@@ -87,7 +87,6 @@ Install package requirements
 
 ```shell
 make install
-pnpm i
 ```
 
 ### Start developing
