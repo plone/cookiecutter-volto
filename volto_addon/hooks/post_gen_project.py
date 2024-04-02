@@ -47,9 +47,9 @@ def main():
         f"""
         {_success('New add-on "{{ cookiecutter.addon_title }}" was generated')}
 
-        Now, enter the repository install the package:
+        Now, enter the generated directory and finish the install:
 
-        pnpm i
+        cd {{ cookiecutter.addon_title }}
         make install
 
         start coding, and push to your organization.
