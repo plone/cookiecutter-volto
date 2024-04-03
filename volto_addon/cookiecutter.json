@@ -6,6 +6,7 @@
   "email": "collective@plone.org",
   "github_organization": "collective",
   "npm_package_name": "{{ cookiecutter.addon_name }}",
+  "noaddon": false,
   "__version_package": "1.0.0-alpha.1",
   "__version_plone_volto": "18.0.0-alpha.25",
   "__version_plone_components": "1.7.0",
@@ -35,6 +36,5 @@
     "email": "Author E-mail"
   },
   "_copy_without_render": [],
-  "_extensions": [
-  ]
+  "_extensions": []
 }

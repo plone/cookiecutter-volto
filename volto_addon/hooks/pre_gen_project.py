@@ -25,6 +25,7 @@ context = {
     "email": "{{ cookiecutter.email }}",
     "github_organization": "{{ cookiecutter.github_organization }}",
     "npm_package_name": "{{ cookiecutter.npm_package_name }}",
+    "noaddon": "{{ cookiecutter.noaddon }}",
 }
 
 

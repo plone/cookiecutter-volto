@@ -36,7 +36,7 @@ format: ../bin/cookiecutter ## Format code
 generate:  ../bin/cookiecutter ## Create a sample package
 	@echo "$(GREEN)==> Creating new test package$(RESET)"
 	rm -rf volto-addon
-	../bin/cookiecutter . --no-input
+	../bin/cookiecutter . --no-input $(ARGS)
 
 .PHONY: test
 test: ../bin/cookiecutter ## Create a sample package and tests it

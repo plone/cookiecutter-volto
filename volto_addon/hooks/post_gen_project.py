@@ -1,5 +1,7 @@
 """Post generation hook."""
 
+import os
+import shutil
 import subprocess
 import sys
 from textwrap import dedent
@@ -11,6 +13,10 @@ HINT = "\x1b[3;35m"
 SUCCESS = "\x1b[1;32m"
 ERROR = "\x1b[1;31m"
 MSG_DELIMITER = "=" * 80
+
+context = {
+    "noaddon": "{{ cookiecutter.noaddon }}",
+}
 
 
 def _error(msg: str) -> str:
@@ -38,8 +44,18 @@ def run_cmd(command: str, shell: bool, cwd: str) -> bool:
     return False if proc.returncode else True
 
 
+def remove(filepath):
+    if os.path.isfile(filepath):
+        os.remove(filepath)
+    elif os.path.isdir(filepath):
+        shutil.rmtree(filepath)
+
+
 def main():
     """Final fixes."""
+    if context["noaddon"] != "False":
+        remove("packages/{{ cookiecutter.addon_name }}")
+
     print(f"{MSG_DELIMITER}")
     print("")
     print(f"{MSG_DELIMITER}")
