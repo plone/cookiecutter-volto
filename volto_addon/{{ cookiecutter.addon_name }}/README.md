@@ -3,7 +3,7 @@
 {{ cookiecutter.description }}
 
 [![npm](https://img.shields.io/npm/v/{{ cookiecutter.npm_package_name }})](https://www.npmjs.com/package/{{ cookiecutter.npm_package_name }})
-[![](https://img.shields.io/badge/-Storybook-ff4785?logo=Storybook&logoColor=white&style=flat-square)](https://kitconcept.github.io/{{ cookiecutter.addon_name }}/)
+[![](https://img.shields.io/badge/-Storybook-ff4785?logo=Storybook&logoColor=white&style=flat-square)](https://{{ cookiecutter.github_organization }}.github.io/{{ cookiecutter.addon_name }}/)
 [![Code analysis checks](https://github.com/{{ cookiecutter.github_organization }}/{{ cookiecutter.addon_name }}/actions/workflows/code.yml/badge.svg)](https://github.com/{{ cookiecutter.github_organization }}/{{ cookiecutter.addon_name }}/actions/workflows/code.yml)
 [![Unit tests](https://github.com/{{ cookiecutter.github_organization }}/{{ cookiecutter.addon_name }}/actions/workflows/unit.yml/badge.svg)](https://github.com/{{ cookiecutter.github_organization }}/{{ cookiecutter.addon_name }}/actions/workflows/unit.yml)
 
