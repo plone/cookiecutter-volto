@@ -33,7 +33,8 @@
     "github_organization": "GitHub Username or Organization",
     "npm_package_name": "Package name on NPM",
     "author": "Author",
-    "email": "Author E-mail"
+    "email": "Author E-mail",
+    "noaddon": "Do not add the default addon"
   },
   "_copy_without_render": [],
   "_extensions": []

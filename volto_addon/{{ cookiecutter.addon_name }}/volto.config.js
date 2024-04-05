@@ -1,8 +1,4 @@
-{% if not cookiecutter.noaddon -%}
-const addons = ['{{ cookiecutter.npm_package_name }}'];
-{% else -%}
-const addons = [];
-{% endif -%}
+const addons = [{% if not cookiecutter.noaddon -%}'{{ cookiecutter.npm_package_name }}'{% endif -%}];
 const theme = '';
 
 module.exports = {

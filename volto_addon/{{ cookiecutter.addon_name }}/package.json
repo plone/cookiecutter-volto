@@ -34,11 +34,8 @@
   },
   "dependencies": {
     "@plone/volto": "workspace:*",
-    {% if not cookiecutter.noaddon -%}
-    "@plone/registry": "workspace:*",
+    "@plone/registry": "workspace:*"{%- if not cookiecutter.noaddon -%},
     "{{ cookiecutter.npm_package_name }}": "workspace:*"
-    {%- else -%}
-    "@plone/registry": "workspace:*"
     {%- endif %}
   },
   "devDependencies": {

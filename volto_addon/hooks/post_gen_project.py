@@ -1,6 +1,6 @@
 """Post generation hook."""
 
-import os
+import pathlib
 import shutil
 import subprocess
 import sys
@@ -45,9 +45,10 @@ def run_cmd(command: str, shell: bool, cwd: str) -> bool:
 
 
 def remove(filepath):
-    if os.path.isfile(filepath):
-        os.remove(filepath)
-    elif os.path.isdir(filepath):
+    filepath = pathlib.Path(filepath)
+    if filepath.is_file():
+        filepath.unlink()
+    elif filepath.is_dir():
         shutil.rmtree(filepath)
 
 
