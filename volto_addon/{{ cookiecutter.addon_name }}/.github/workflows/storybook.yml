@@ -11,6 +11,9 @@ on:
 env:
   NODE_VERSION: {{ cookiecutter.__version_gha_node }}
 
+permissions:
+  contents: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
