@@ -45,11 +45,11 @@ def main():
     print(f"{MSG_DELIMITER}")
     msg = dedent(
         f"""
-        {_success('New add-on "{{ cookiecutter.addon_title }}" was generated')}
+        {_success('New add-on "{{ cookiecutter.addon_name }}" was generated')}
 
         Now, enter the generated directory and finish the install:
 
-        cd {{ cookiecutter.addon_title }}
+        cd {{ cookiecutter.addon_name }}
         make install
 
         start coding, and push to your organization.
