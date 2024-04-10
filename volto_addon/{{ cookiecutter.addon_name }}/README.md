@@ -11,7 +11,11 @@
 
 <!-- List your awesome features here -->
 
-## Install
+## Installation
+
+### Into a @plone/generator-volto Volto based project
+
+This is the official way to do it in Volto 17 and before.
 
 Create a new Volto project (you can skip this step if you already have one):
 
@@ -45,19 +49,47 @@ Start volto with:
 yarn start
 ```
 
+### Into a cookiecutter-volto based project
+
+This is the way to install it in the (upcoming) Volto 18.
+
+Add `{{ cookiecutter.npm_package_name }}` to your `package.json`:
+
+```JSON
+"dependencies": {
+    "{{ cookiecutter.npm_package_name }}": "*"
+}
+```
+
+Add `{{ cookiecutter.npm_package_name }}` to your `volto.config.js`:
+
+```javascript
+const addons = ['{{ cookiecutter.npm_package_name }}'];
+```
+
+If this package provides a volto theme, and you want to activate it (and only then!), add to your `volto.config.js`:
+
+```javascript
+const theme = '{{ cookiecutter.npm_package_name }}';
+```
+
 ### Test it
 
 Go to http://localhost:3000/, login and check the awesome new features.
+
 
 ## Development
 
 The development of this add-on is done in isolation using a new approach using pnpm workspaces and latest `mrs-developer` and other Volto core improvements.
 For this reason, it only works with pnpm and Volto 18 (currently in alpha)
 
-### Requisites
+### Preprequisites
 
-- Volto 18
-- pnpm as package manager
+- **Node** Node has to be installed, e.g. using the [Node Version Manager (nvm)](https://github.com/nvm-sh/nvm).
+  Ensure to have the latest LTS version installed and used.
+- **Make** [GNU Make](https://www.gnu.org/software/make/) is required to run the Makefile. You can install it using your package manager.
+- **Docker** [Docker](https://docs.docker.com/get-docker/) is required to easily run the backend server.
+
 
 ### Make convenience commands
 
