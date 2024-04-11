@@ -13,9 +13,10 @@
 
 ## Installation
 
-### Into a @plone/generator-volto Volto based project
+To install your project, you must choose the method appropriate to your version of Volto.
 
-This is the official way to do it in Volto 17 and before.
+### Volto 17 and earlier
+
 
 Create a new Volto project (you can skip this step if you already have one):
 
@@ -49,9 +50,8 @@ Start volto with:
 yarn start
 ```
 
-### Into a cookiecutter-volto based project
+### Volto 18 and later
 
-This is the way to install it in the (upcoming) Volto 18.
 
 Add `{{ cookiecutter.npm_package_name }}` to your `package.json`:
 
@@ -67,15 +67,15 @@ Add `{{ cookiecutter.npm_package_name }}` to your `volto.config.js`:
 const addons = ['{{ cookiecutter.npm_package_name }}'];
 ```
 
-If this package provides a volto theme, and you want to activate it (and only then!), add to your `volto.config.js`:
+If this package provides a Volto theme, and you want to activate it, then add the following to your `volto.config.js`:
 
 ```javascript
 const theme = '{{ cookiecutter.npm_package_name }}';
 ```
 
-### Test it
+## Test installation
 
-Go to http://localhost:3000/, login and check the awesome new features.
+Visit http://localhost:3000/ in a browser, login, and check the awesome new features.
 
 
 ## Development
@@ -83,7 +83,7 @@ Go to http://localhost:3000/, login and check the awesome new features.
 The development of this add-on is done in isolation using a new approach using pnpm workspaces and latest `mrs-developer` and other Volto core improvements.
 For this reason, it only works with pnpm and Volto 18 (currently in alpha)
 
-### Preprequisites
+### Pre-requisites
 
 - **Node** Node has to be installed, e.g. using the [Node Version Manager (nvm)](https://github.com/nvm-sh/nvm).
   Ensure to have the latest LTS version installed and used.
