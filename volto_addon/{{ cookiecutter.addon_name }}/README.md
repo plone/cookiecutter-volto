@@ -85,10 +85,10 @@ For this reason, it only works with pnpm and Volto 18 (currently in alpha)
 
 ### Pre-requisites
 
-- **Node** Node has to be installed, e.g. using the [Node Version Manager (nvm)](https://github.com/nvm-sh/nvm).
+- **Node** Node has to be installed, e.g. using the [Node Version Manager (nvm)](https://6.docs.plone.org/install/create-project.html#node-js).
   Ensure to have the latest LTS version installed and used.
-- **Make** [GNU Make](https://www.gnu.org/software/make/) is required to run the Makefile. You can install it using your package manager.
-- **Docker** [Docker](https://docs.docker.com/get-docker/) is required to easily run the backend server.
+- **Make** [Make](https://6.docs.plone.org/install/create-project.html#make) is required to run the Makefile.
+- **Docker** [Docker](https://6.docs.plone.org/install/create-project.html#docker) is required to easily run the backend server.
 
 
 ### Make convenience commands
