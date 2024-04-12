@@ -55,7 +55,7 @@ yarn start
 
 Add `{{ cookiecutter.npm_package_name }}` to your `package.json`:
 
-```JSON
+```json
 "dependencies": {
     "{{ cookiecutter.npm_package_name }}": "*"
 }
