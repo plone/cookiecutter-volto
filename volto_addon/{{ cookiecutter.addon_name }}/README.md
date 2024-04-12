@@ -15,8 +15,8 @@
 
 To install your project, you must choose the method appropriate to your version of Volto.
 
-### Volto 17 and earlier
 
+### Volto 17 and earlier
 
 Create a new Volto project (you can skip this step if you already have one):
 
@@ -52,7 +52,6 @@ yarn start
 
 ### Volto 18 and later
 
-
 Add `{{ cookiecutter.npm_package_name }}` to your `package.json`:
 
 ```json
@@ -81,14 +80,14 @@ Visit http://localhost:3000/ in a browser, login, and check the awesome new feat
 ## Development
 
 The development of this add-on is done in isolation using a new approach using pnpm workspaces and latest `mrs-developer` and other Volto core improvements.
-For this reason, it only works with pnpm and Volto 18 (currently in alpha)
+For this reason, it only works with pnpm and Volto 18 (currently in alpha).
+
 
 ### Pre-requisites
 
-- **Node** Node has to be installed, e.g. using the [Node Version Manager (nvm)](https://6.docs.plone.org/install/create-project.html#node-js).
-  Ensure to have the latest LTS version installed and used.
-- **Make** [Make](https://6.docs.plone.org/install/create-project.html#make) is required to run the Makefile.
-- **Docker** [Docker](https://6.docs.plone.org/install/create-project.html#docker) is required to easily run the backend server.
+-   [Node.js](https://6.docs.plone.org/install/create-project.html#node-js)
+-   [Make](https://6.docs.plone.org/install/create-project.html#make)
+-   [Docker](https://6.docs.plone.org/install/create-project.html#docker)
 
 
 ### Make convenience commands
@@ -113,9 +112,9 @@ test-acceptance                      Start Cypress in interactive mode
 test-acceptance-headless             Run cypress tests in headless mode for CI
 ```
 
-### Development Environment Setup
+### Development environment set up
 
-Install package requirements
+Install package requirements.
 
 ```shell
 make install
@@ -123,31 +122,29 @@ make install
 
 ### Start developing
 
-Run (in separate terminal sessions)
-
-Start backend server
+Start the backend.
 
 ```shell
 make start-backend-docker
 ```
 
-Start frontend
+In a separate terminal session, start the frontend.
 
 ```shell
 pnpm start
 ```
 
-### Linting
+### Lint code
 
-Run ESlint, Prettier and Stylelint
+Run ESlint, Prettier, and Stylelint in analyze mode.
 
 ```shell
 make lint
 ```
 
-### Formatting
+### Format code
 
-Run ESlint, Prettier and Stylelint in fix mode
+Run ESlint, Prettier, and Stylelint in fix mode.
 
 ```shell
 make format
@@ -155,7 +152,7 @@ make format
 
 ### i18n
 
-Extract the i18n messages to locales
+Extract the i18n messages to locales.
 
 ```shell
 make i18n
@@ -163,7 +160,7 @@ make i18n
 
 ### Unit tests
 
-Run unit tests
+Run unit tests.
 
 ```shell
 make test
@@ -171,21 +168,21 @@ make test
 
 ### Run Cypress tests
 
-Run (in separate terminal sessions)
+Run each of these steps in separate terminal sessions.
 
-Start the frontend in dev mode
+In the first session, start the frontend in development mode.
 
 ```shell
 make start-test-acceptance-frontend-dev
 ```
 
-Start the backend acceptance server
+In the second session, start the backend acceptance server.
 
 ```shell
 make start-test-acceptance-server
 ```
 
-Start the Cypress interactive test runner
+In the third session, start the Cypress interactive test runner.
 
 ```shell
 make test-acceptance
