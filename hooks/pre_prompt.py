@@ -1,4 +1,7 @@
 """Pre Prompt hook."""
+import re
+import subprocess
+import sys
 
 TERMINATOR = "\x1b[0m"
 WARNING = "\x1b[1;33m"
@@ -30,42 +33,50 @@ def _info(msg: str) -> str:
     return f"{INFO}{msg}{TERMINATOR}"
 
 
-TEXT = """
-                 .xxxxxxxxxxxxxx.
-             ;xxxxxxxxxxxxxxxxxxxxxx;
-          ;xxxxxxxxxxxxxxxxxxxxxxxxxxxx;
-        xxxxxxxxxx              xxxxxxxxxx
-      xxxxxxxx.                    .xxxxxxxx
-     xxxxxxx      xxxxxxx:            xxxxxxx
-   :xxxxxx       xxxxxxxxxx             xxxxxx:
-  :xxxxx+       xxxxxxxxxxx              +xxxxx:
- .xxxxx.        :xxxxxxxxxx               .xxxxx.
- xxxxx+          ;xxxxxxxx                 +xxxxx
- xxxxx              +xx.                    xxxxx.
-xxxxx:                      .xxxxxxxx       :xxxxx
-xxxxx                      .xxxxxxxxxx       xxxxx
-xxxxx                      xxxxxxxxxxx       xxxxx
-xxxxx                      .xxxxxxxxxx       xxxxx
-xxxxx:                      .xxxxxxxx       :xxxxx
-.xxxxx              ;xx.       ...          xxxxx.
- xxxxx+          :xxxxxxxx                 +xxxxx
- .xxxxx.        :xxxxxxxxxx               .xxxxx.
-  :xxxxx+       xxxxxxxxxxx              ;xxxxx:
-   :xxxxxx       xxxxxxxxxx             xxxxxx:
-     xxxxxxx      xxxxxxx;            xxxxxxx
-      xxxxxxxx.                    .xxxxxxxx
-        xxxxxxxxxx              xxxxxxxxxx
-          ;xxxxxxxxxxxxxxxxxxxxxxxxxxxx+
-             ;xxxxxxxxxxxxxxxxxxxxxx;
-                 .xxxxxxxxxxxxxx.
+TEXT="""
+            uuuuuuuuuuuuuuuuuuuu
+          u" uuuuuuuuuuuuuuuuuu "u
+        u" u$$$$$$$$$$$$$$$$$$$$u "u
+      u" u$$$$$$$$$$$$$$$$$$$$$$$$u "u
+    u" u$$$$$$$$$$$$$$$$$$$$$$$$$$$$u "u
+  u" u$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$u "u
+u" u$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$u "u
+$ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ $
+$ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ $
+$ $$$" ... "$...  ...$" ... "$$$  ... "$$$ $
+$ $$$u `"$$$$$$$  $$$  $$$$$  $$  $$$  $$$ $
+$ $$$$$$uu "$$$$  $$$  $$$$$  $$  ... u$$$ $
+$ $$$""$$$  $$$$  $$$u "$$$" u$$  $$$$$$$$ $
+$ $$$$....,$$$$$..$$$$$....,$$$$..$$$$$$$$ $
+$ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ $
+"u "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" u"
+  "u "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" u"
+    "u "$$$$$$$$$$$$$$$$$$$$$$$$$$$$" u"
+      "u "$$$$$$$$$$$$$$$$$$$$$$$$" u"
+        "u "$$$$$$$$$$$$$$$$$$$$" u"
+          "u .................. u"
+            |||||||||||||||||||||
 """
+
+
 
 
 def main():
     """Validate context."""
     print(f"{MSG_DELIMITER}")
-    print(f"{ _info(TEXT)}")
+    print(f"{ _error(TEXT)}")
     print(f"{MSG_DELIMITER}")
+    print(" ")
+    print("   This template is deprecated. ")
+    print("   Please, consider using its replacement:  ")
+    print("   cookieplone (github.com/plone/cookieplone)  ")
+    print(" ")
+    print(f"{MSG_DELIMITER}")
+    print(" ")
+    print("   pipx run cookieplone frontend_addon  ")
+    print(" ")
+    print(f"{MSG_DELIMITER}")
+
 
 
 if __name__ == "__main__":

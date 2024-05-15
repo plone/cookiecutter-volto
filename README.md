@@ -1,5 +1,7 @@
-![GitHub](https://img.shields.io/github/license/plone/cookiecutter-volto)
-[![Black code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
+[!WARNING]
+> This template is deprecated, and no longer supported!.
+> Consider using the new [cookieplone](https://github.com/plone/cookieplone)
+
 
 # Cookiecutter Volto Templates
 
